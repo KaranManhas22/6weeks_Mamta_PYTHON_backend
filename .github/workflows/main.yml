@@ -1,0 +1,28 @@
+name: AI_Smart_Booking_Backend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: my-deployment
+        uses: actions/checkout@v4
+      - name: connection
+        uses: appleboy/ssh-action@v1.2.0
+
+        with:
+          host: ${{secrets.IP}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+
+          script: |
+            cd /home/mamta//home/mamta/6weeks_Mamta_PYTHON_backend
+            git pull origin main
+            source/venv/bin/activate
+            sudo pip install -r requirements.txt
+            pm2 start “uvicorn unified_main:app --host 0.0.0.0 --port 8000” --name backend           
