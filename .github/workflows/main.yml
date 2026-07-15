@@ -21,8 +21,8 @@ jobs:
           password: ${{secrets.PASSWORD}}
 
           script: |
-            cd /home/mamta/6weeks_Mamta_PYTHON_backend
+            cd /home/mamta/6weeks_Mamta_PYTHON_backend/
             git pull origin main
-            source /venv/bin/activate
+            source venv/bin/activate
             sudo pip install -r requirements.txt
             pm2 start “uvicorn unified_main:app --host 0.0.0.0 --port 8000” --name backend           
