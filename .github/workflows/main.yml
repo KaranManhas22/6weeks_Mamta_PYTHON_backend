@@ -21,7 +21,7 @@ jobs:
           password: ${{secrets.PASSWORD}}
 
           script: |
-            cd /home/mamta//home/mamta/6weeks_Mamta_PYTHON_backend
+            cd /home/mamta/6weeks_Mamta_PYTHON_backend
             git pull origin main
             source/venv/bin/activate
             sudo pip install -r requirements.txt
